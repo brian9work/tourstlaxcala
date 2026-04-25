@@ -1,21 +1,29 @@
 // Image repository — drop files in /public/images/ and update paths here
 
 export const images = {
-  hero: "/images/hero-tlaxcala.jpg",
+  hero: "/hero-tlaxcala.jpg",
 
   capturing: {
     basilica: "/images/basilica-ocotlan.jpg",
     highlands: "/images/highlands-tlaxcala.jpg",
   },
 
+  places: {
+    huamantla: "/images/places/huamantla.jpg",
+    luciernagas: "/images/places/luciernagas.jpg",
+    tlaxcala: "/images/places/tlaxcala.jpg",
+    valquirico: "/images/places/valquirico.jpg",
+  },
+
   destinations: {
-    valquirico: "/images/valquirico.jpg",
-    cacaxtla: "/images/cacaxtla.jpg",
-    firefly: "/images/firefly-sanctuary.jpg",
+    valquirico: "/images/places/valquirico.jpg",
+    cacaxtla: "/images/places/cacaxtla.jpg",
+    luciernagas: "/images/places/luciernagas.jpg",
+    huamantla: "/images/places/huamantla.jpg",
   },
 
   culinary: {
-    food: "/images/culinary-food.jpg",
+    food: "/images/food.jpg",
   },
 
   crafts: {
@@ -26,6 +34,7 @@ export const images = {
   },
 
   logo: "/images/logo.webp",
+  mascot: "/images/mascot.webp",
 } as const;
 
 export const WA_LINK = "https://wa.me/5554786417";

@@ -7,6 +7,7 @@ import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 import { attractions } from "./mock/attractions";
 import { destinations } from "./mock/destinations";
 import { testimonials } from "./mock/testimonials";
+import { LoadingScreen } from "./components/LoadingScreen";
 
 const CRAFT_IMGS = [
   images.crafts.textile,
@@ -225,9 +226,9 @@ function PageContent() {
         <ul className="hidden md:flex gap-6">
           {([
             [t.nav.attractions, "#atracciones"],
-            [t.nav.gastronomy,  "#gastronomia"],
-            [t.nav.culture,     "#cultura"],
-            [t.nav.about,       "#nosotros"],
+            [t.nav.gastronomy, "#gastronomia"],
+            [t.nav.culture, "#cultura"],
+            [t.nav.about, "#nosotros"],
           ] as [string, string][]).map(([label, href]) => (
             <li key={href}>
               <a
@@ -255,22 +256,35 @@ function PageContent() {
           <Image src={images.hero} alt="Tlaxcala" fill className="object-cover object-bottom" priority sizes="100vw" />
         </div>
         <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 text-center px-6 max-w-3xl">
-          <div>
-            <div className="flex justify-center mb-6">
-              <div className="bg-[#1a0a3c] rounded-full p-3 w-20 h-20 flex items-center justify-center">
-                <Image src={images.logo} alt="Tours Tlaxcala" width={64} height={64} className="object-contain rounded-full" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8">
+          {/* Text */}
+          <div className="text-center md:text-left flex-1">
+            <div className="flex justify-center md:justify-start mb-6">
+              <div className="bg-[#1a0a3c] p-5 rounded-xl flex items-center justify-center">
+                <Image src={images.logo} alt="Tours Tlaxcala" width={100} height={100} className="object-contain" />
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
               {t.hero.heading1}<br />
               {t.hero.heading2} <span className="text-orange-400">{t.hero.heading3}</span> {t.hero.heading4}
             </h1>
-            <p className="text-white/80 text-base mb-8 max-w-xl mx-auto">{t.hero.sub}</p>
+            <p className="text-white/80 text-base mb-8 max-w-xl">{t.hero.sub}</p>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#1a0a3c] hover:bg-[#2d1260] text-white font-semibold px-6 py-3 rounded-full transition-colors cursor-pointer">
               {t.hero.cta}
             </a>
+          </div>
+
+          {/* Mascot */}
+          <div className="flex-shrink-0 hidden md:block animate-[float_3s_ease-in-out_infinite]">
+            <Image
+              src={images.mascot}
+              alt="Mascota Tours Tlaxcala"
+              width={280}
+              height={280}
+              className="object-contain drop-shadow-2xl"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -435,8 +449,11 @@ function PageContent() {
 
 export default function Home() {
   return (
-    <LanguageProvider>
-      <PageContent />
-    </LanguageProvider>
+    <>
+      <LoadingScreen />
+      <LanguageProvider>
+        <PageContent />
+      </LanguageProvider>
+    </>
   );
 }
