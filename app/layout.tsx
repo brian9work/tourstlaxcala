@@ -1,28 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Tours Tlaxcala — El Corazón de México Te Espera",
-  description: "Descubre Tlaxcala con guías locales expertos. Atracciones, gastronomía, cultura y festividades únicas. Reserva tu tour ahora.",
-  keywords: ["tours tlaxcala", "turismo tlaxcala", "luciérnagas nanacamilpa", "cacaxtla", "huamantla", "valquirico", "viajes mexico"],
-  authors: [{ name: "Tours Tlaxcala" }],
-  openGraph: {
-    title: "Tours Tlaxcala — El Corazón de México Te Espera",
-    description: "Experiencias auténticas en Tlaxcala con guías nativos. Basílica de Ocotlán, Feria de Huamantla, Santuario de Luciérnagas y más.",
-    locale: "es_MX",
-    type: "website",
-  },
+  title: "Tours Tlaxcala",
+  description: "Tour Operadora Tlaxcala",
 };
 
 export default function RootLayout({
@@ -31,11 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="es" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="font-[var(--font-inter)]">
+        <Header />
+        <div className="pt-16">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }
